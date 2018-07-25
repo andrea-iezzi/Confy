@@ -12,15 +12,10 @@ trait HasConfigTrait {
      * @return bool
      */
     public function putConfig(string $key, string $data, string $category = 'default'){
-        $config = Confy::firstOrCreate([
-            'key' => $key,
-            'category' => $category,
-            'model_type' => get_class($this),
-            'model_id' => $this->id
-        ], [
-            'data' => $data,
-            'isJson' => false
-        ]);
+        if($config = $this->getConfig($key, $category)){
+            $config->data = $data;
+            $config->isJson = false;
+        }
 
         return (bool) ($config);
     }
@@ -32,15 +27,10 @@ trait HasConfigTrait {
      * @return bool
      */
     public function putArrayConfig(string $key, array $data, string $category = 'default'){
-        $config = Confy::firstOrCreate([
-            'key' => $key,
-            'category' => $category,
-            'model_type' => get_class($this),
-            'model_id' => $this->id
-        ], [
-            'data' => json_encode($data),
-            'isJson' => true
-        ]);
+        if($config = $this->getConfig($key, $category)){
+            $config->data = json_encode($data, true);
+            $config->isJson = true;
+        }
 
         return (bool) ($config);
     }
