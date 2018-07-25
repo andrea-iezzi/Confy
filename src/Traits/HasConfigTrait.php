@@ -12,11 +12,16 @@ trait HasConfigTrait {
      * @return bool
      */
     public function putConfig(string $key, string $data, string $category = 'default'){
-        if($config = $this->getConfig($key, $category)){
-            $config->data = $data;
-            $config->isJson = false;
-            $config->save();
+        if($config = $this->getConfig($key, $category) === null){
+            $config = new Confy();
+            $config->key = $key;
+            $config->category = $category;
+            $config->model_id = $this->id;
+            $config->model_type = get_class($this);
         }
+        $config->data = $data;
+        $config->isJson = false;
+        $config->save();
 
         return (bool) ($config);
     }
@@ -28,11 +33,16 @@ trait HasConfigTrait {
      * @return bool
      */
     public function putArrayConfig(string $key, array $data, string $category = 'default'){
-        if($config = $this->getConfig($key, $category)){
-            $config->data = json_encode($data, true);
-            $config->isJson = true;
-            $config->save();
+        if($config = $this->getConfig($key, $category) === null){
+            $config = new Confy();
+            $config->key = $key;
+            $config->category = $category;
+            $config->model_id = $this->id;
+            $config->model_type = get_class($this);
         }
+        $config->data = json_encode($data, true);
+        $config->isJson = true;
+        $config->save();
 
         return (bool) ($config);
     }
