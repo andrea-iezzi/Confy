@@ -7,11 +7,11 @@ trait HasConfigTrait {
 
     /**
      * @param string $key
-     * @param string $category
      * @param string $data
+     * @param string $category
      * @return bool
      */
-    public function putConfig(string $key, string $category = 'default', string $data){
+    public function putConfig(string $key, string $data, string $category = 'default'){
         $config = Confy::firstOrCreate(['key' => $key, 'category' => $category, 'model_type' => get_class($this), 'model_id' => $this->id]);
         $config->data = $data;
         $config->isJson = false;
@@ -22,11 +22,11 @@ trait HasConfigTrait {
 
     /**
      * @param string $key
-     * @param string $category
      * @param array $data
+     * @param string $category
      * @return bool
      */
-    public function putArrayConfig(string $key, string $category = 'default', array $data){
+    public function putArrayConfig(string $key, array $data, string $category = 'default'){
         $config = Confy::firstOrCreate(['key' => $key, 'category' => $category, 'model_type' => get_class($this), 'model_id' => $this->id]);
         $config->data = json_encode($data);
         $config->isJson = true;
