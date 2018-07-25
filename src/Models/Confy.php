@@ -8,6 +8,6 @@ class Confy extends Model {
 
     protected $table = 'configs';
 
-    protected $fillable = ['key', 'category', 'model_id', 'model_type'];
+    protected $fillable = ['key', 'category', 'model_id', 'model_type', 'data', 'isJson'];
 
 }
