@@ -8,6 +8,10 @@ Add configurations to your eloquent model easily
 ## Installation
 ```bash
 composer require michelangelomo/confy
+
+php artisan vendor:publish --tag=migrations
+
+php artisan migrate
 ```
 
 ## Usage
