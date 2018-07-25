@@ -15,6 +15,7 @@ trait HasConfigTrait {
         if($config = $this->getConfig($key, $category)){
             $config->data = $data;
             $config->isJson = false;
+            $config->save();
         }
 
         return (bool) ($config);
@@ -30,6 +31,7 @@ trait HasConfigTrait {
         if($config = $this->getConfig($key, $category)){
             $config->data = json_encode($data, true);
             $config->isJson = true;
+            $config->save();
         }
 
         return (bool) ($config);
