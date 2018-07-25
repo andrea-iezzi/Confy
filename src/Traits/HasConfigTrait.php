@@ -1,7 +1,7 @@
 <?php
 namespace Michelangelo\Confy\Traits;
 
-use Michelangelo\Confy\Models\Config;
+use Michelangelo\Confy\Models\Confy;
 
 trait HasConfigTrait {
 
@@ -12,7 +12,7 @@ trait HasConfigTrait {
      * @return bool
      */
     public function putConfig(string $key, string $category = 'default', string $data){
-        $config = Config::firstOrCreate(['key' => $key, 'category' => $category, 'model_type' => get_class($this), 'model_id' => $this->id]);
+        $config = Confy::firstOrCreate(['key' => $key, 'category' => $category, 'model_type' => get_class($this), 'model_id' => $this->id]);
         $config->data = $data;
         $config->isJson = false;
         $config->save();
@@ -27,7 +27,7 @@ trait HasConfigTrait {
      * @return bool
      */
     public function putArrayConfig(string $key, string $category = 'default', array $data){
-        $config = Config::firstOrCreate(['key' => $key, 'category' => $category, 'model_type' => get_class($this), 'model_id' => $this->id]);
+        $config = Confy::firstOrCreate(['key' => $key, 'category' => $category, 'model_type' => get_class($this), 'model_id' => $this->id]);
         $config->data = json_encode($data);
         $config->isJson = true;
         $config->save();
@@ -41,7 +41,7 @@ trait HasConfigTrait {
      * @return mixed|null
      */
     public function getConfig(string $key, string $category = 'default'){
-        $config = Config::where('model_id', $this->id)
+        $config = Confy::where('model_id', $this->id)
             ->where('model_type', get_class($this))
             ->where('key', $key)
             ->where('category', $category)->first();

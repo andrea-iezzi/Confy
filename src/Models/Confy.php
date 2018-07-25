@@ -4,7 +4,7 @@ namespace Michelangelo\Confy\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Config extends Model {
+class Confy extends Model {
 
     protected $table = 'configs';
 

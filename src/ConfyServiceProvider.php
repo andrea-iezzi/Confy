@@ -19,6 +19,7 @@ class ConfyServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
+        $this->app->make('Michelangelo\Confy\Confy');
         $this->publishes([
             __DIR__.'/../database/' => database_path('migrations')
         ], 'migrations');
