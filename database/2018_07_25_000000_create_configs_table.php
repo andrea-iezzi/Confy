@@ -15,7 +15,7 @@ class CreateConfigsTable extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->increments('id');
-            $table->morphs('model');
+            $table->nullableMorphs('model');
 
             $table->string('key');
             $table->string('category');
