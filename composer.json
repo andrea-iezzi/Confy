@@ -1,13 +1,13 @@
 {
-    "name": "andrea-iezzi/confy",
+    "name": "michelangelomo/confy",
     "description": "Add configuration to your model easily",
     "type": "library",
     "keywords": ["laravel","laravel-utility","laravel5-package","PHP","laravel5"],
-    "homepage": "https://github.com/andrea-iezzi/confy",
+    "homepage": "https://github.com/michelangelomo/confy",
     "authors": [
         {
-            "name": "Andrea",
-            "email": "andrea.iezzi@gmail.com"
+            "name": "Michelangelo",
+            "email": "michelangelo@morrillo.it"
         }
     ],
     "require": {
@@ -17,7 +17,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Andrea\\Confy\\ConfyServiceProvider"
+                "Michelangelo\\Confy\\ConfyServiceProvider"
             ]
         }
     },
